@@ -2,3 +2,7 @@ Sun Jul  3 16:44:51 2005                                        slords
 
 Mezzanine auto-imported e-smith-pptpd from e-smith-pptpd-1.11.0-15.src.rpm.
 ----------------------------------------------------------------------
+Sun Jul  3 16:48:29 2005                                        slords
+
+- Reverse previous patch for ppp_generic.  No longer needed.
+----------------------------------------------------------------------

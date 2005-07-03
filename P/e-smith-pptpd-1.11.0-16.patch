@@ -1,0 +1,9 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-pptpd-1.11.0/root/var/service/pptpd/run mezzanine_patched_e-smith-pptpd-1.11.0/root/var/service/pptpd/run
+--- e-smith-pptpd-1.11.0/root/var/service/pptpd/run	2005-07-03 16:45:55.579283088 -0600
++++ mezzanine_patched_e-smith-pptpd-1.11.0/root/var/service/pptpd/run	2005-07-03 16:45:32.400806752 -0600
+@@ -29,5 +29,4 @@
+ fi
+ 
+ exec 2>&1
+-/sbin/modprobe ppp_generic
+ exec $pptpd -f

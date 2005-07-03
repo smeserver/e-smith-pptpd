@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.11.0
-%define release 15
+%define release 16
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -21,6 +21,7 @@ Patch8: e-smith-pptpd-1.11.0-11.mitel_patch
 Patch9: e-smith-pptpd-1.11.0-13.mitel_patch
 Patch10: e-smith-pptpd-1.11.0-14.mitel_patch
 Patch11: e-smith-pptpd-1.11.0-15.mitel_patch
+Patch12: e-smith-pptpd-1.11.0-16.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
@@ -35,6 +36,10 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Sun Jul 03 2005 Shad L. Lords
+- [1.11.0-16]
+- Reverse previous patch for ppp_generic.  No longer needed.
+
 * Fri Jun 24 2005 Charlie Brady <charlieb@e-smith.com>
 - [1.11.0-15]
 - Various options.pptpd config changes to support radius auth. [SF: 1225995]
@@ -543,6 +548,7 @@ e-smith server and gateway - configure inbound PPTP VPN access
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 
 %build
 for i in console-save \

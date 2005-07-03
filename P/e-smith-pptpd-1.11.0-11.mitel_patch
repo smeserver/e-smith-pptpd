@@ -1,0 +1,24 @@
+Index: e-smith-pptpd/createlinks
+diff -u e-smith-pptpd/createlinks:1.13 e-smith-pptpd/createlinks:1.14
+--- e-smith-pptpd/createlinks:1.13	Tue Jan 25 13:19:43 2005
++++ e-smith-pptpd/createlinks	Tue Mar 15 18:01:09 2005
+@@ -27,16 +27,14 @@
+     ip-change
+             ) )
+ {
+-    safe_symlink("sigterm", "root/etc/e-smith/$event/services2adjust/pptpd");
++    safe_symlink("sigterm", "root/etc/e-smith/events/$event/services2adjust/pptpd");
+ }
+ 
+ # allowing and denying network access
+ foreach $event (qw(ip-up.pptpd ip-down))
+ {
+-    event_link("generic_template_expand", $event, "05");
+     event_link("pptp-interface-access", $event, "70");
+-    event_link("adjust-services", $event, "90");
+-    safe_symlink("adjust", "root/etc/e-smith/$event/services2adjust/masq");
++    safe_symlink("adjust", "root/etc/e-smith/events/$event/services2adjust/masq");
+ }
+ 
+ 
+Index: e-smith-pptpd/e-smith-pptpd.spec

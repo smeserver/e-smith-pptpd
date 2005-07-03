@@ -1,0 +1,22 @@
+Index: e-smith-pptpd/e-smith-pptpd.spec
+diff -u e-smith-pptpd/root/etc/e-smith/templates/etc/inittab/60pptpd:1.1.1.1 e-smith-pptpd/root/etc/e-smith/templates/etc/inittab/60pptpd:removed
+--- e-smith-pptpd/root/etc/e-smith/templates/etc/inittab/60pptpd:1.1.1.1	Sat May 18 14:15:06 2002
++++ e-smith-pptpd/root/etc/e-smith/templates/etc/inittab/60pptpd	Wed Dec 31 19:00:00 1969
+@@ -1,17 +0,0 @@
+-{
+-    use esmith::db;
+-
+-    local %services;
+-    $services{'pptpd'} = $pptpd;
+-
+-    my $status = db_get_prop(\%services, "pptpd", "status");
+-
+-    if (defined $status and $status eq "enabled")
+-    {
+-	$OUT .= "pptp:357:respawn:/usr/sbin/pptpd -f";
+-    }
+-    else
+-    {
+-	$OUT .= "# pptpd is not enabled";
+-    }
+-}

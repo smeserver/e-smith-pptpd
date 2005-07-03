@@ -1,0 +1,33 @@
+Index: e-smith-pptpd/e-smith-pptpd.spec
+diff -u e-smith-pptpd/root/etc/e-smith/events/actions/pptpd-restart:1.2 e-smith-pptpd/root/etc/e-smith/events/actions/pptpd-restart:1.3
+--- e-smith-pptpd/root/etc/e-smith/events/actions/pptpd-restart:1.2	Mon Jan 19 21:11:49 2004
++++ e-smith-pptpd/root/etc/e-smith/events/actions/pptpd-restart	Mon Jan 19 22:11:37 2004
+@@ -10,7 +10,7 @@
+ #
+ # This program is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.	See the
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+@@ -26,12 +26,17 @@
+ 
+ use strict;
+ use Errno;
++use esmith::ConfigDB;
++
++my $db = esmith::ConfigDB->open_ro;
++my $status = $db->get_prop('pptpd', 'status') || 'disabled';
++my $action = $status eq 'enabled' ? 'restart' : 'stop';
+ 
+ # pptpd is run under supervise
+ my $initscript = '/etc/init.d/supervise/pptpd';
+ die "$initscript does not exist!\n" if not -e $initscript;
+ 
+-system($initscript, "restart") == 0
+-    or die "Restart of pptpd returned non-zero.\n";
++system($initscript, $action) == 0
++    or die "$action of pptpd returned non-zero.\n";
+ 
+ exit (0);

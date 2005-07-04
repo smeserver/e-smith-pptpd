@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.11.0
-%define release 16
+%define release 15sme01
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -21,7 +21,7 @@ Patch8: e-smith-pptpd-1.11.0-11.mitel_patch
 Patch9: e-smith-pptpd-1.11.0-13.mitel_patch
 Patch10: e-smith-pptpd-1.11.0-14.mitel_patch
 Patch11: e-smith-pptpd-1.11.0-15.mitel_patch
-Patch12: e-smith-pptpd-1.11.0-16.patch
+Patch12: e-smith-pptpd-1.11.0-15sme01.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
@@ -37,7 +37,7 @@ e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
 * Sun Jul 03 2005 Shad L. Lords
-- [1.11.0-16]
+- [1.11.0-15sme01]
 - Reverse previous patch for ppp_generic.  No longer needed.
 
 * Fri Jun 24 2005 Charlie Brady <charlieb@e-smith.com>

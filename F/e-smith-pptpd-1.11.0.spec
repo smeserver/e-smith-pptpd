@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.11.0
-%define release 16
+%define release 16sme01
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -22,6 +22,7 @@ Patch9: e-smith-pptpd-1.11.0-13.mitel_patch
 Patch10: e-smith-pptpd-1.11.0-14.mitel_patch
 Patch11: e-smith-pptpd-1.11.0-15.mitel_patch
 Patch12: e-smith-pptpd-1.11.0-16.mitel_patch
+Patch13: e-smith-pptpd-1.11.0-noipparam.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
@@ -36,6 +37,10 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Sat Jul 16 2005 Charlie Brady <charlieb@e-smith.com>
+- [1.11.0-16sme01]
+- Add noipparam parameter so that ppp gets called correctly
+
 * Tue Jul 12 2005 Charlie Brady <charlieb@e-smith.com>
 - [1.11.0-16]
 - Patch from Shad. Remove modprobe of ppp_generic (unnecessary). [SF: 1225995]
@@ -549,6 +554,7 @@ e-smith server and gateway - configure inbound PPTP VPN access
 %patch10 -p1
 %patch11 -p1
 %patch12 -p1
+%patch13 -p1
 
 %build
 for i in console-save \

@@ -1,0 +1,11 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/pptpd.conf/noipparm mezzanine_patched_e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/pptpd.conf/noipparm
+--- e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/pptpd.conf/noipparm	1969-12-31 17:00:00.000000000 -0700
++++ mezzanine_patched_e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/pptpd.conf/noipparm	2005-07-16 10:09:00.096013016 -0600
+@@ -0,0 +1,7 @@
++{
++# TAG: noipparam
++#       Suppress the passing of the client's IP address to PPP, which is
++#       done by default otherwise.
++#
++}
++noipparam

@@ -21,3 +21,10 @@ Sat Jul 16 10:12:17 2005                           Shad Lords (slords)
 Add noipparam patch
 
 ----------------------------------------------------------------------
+Wed Jul 20 19:13:52 2005                           Shad Lords (slords)
+
+- Move masq fragement from template to db [SF: 1241414]
+- Default sessions to 0 like web panel
+
+
+----------------------------------------------------------------------

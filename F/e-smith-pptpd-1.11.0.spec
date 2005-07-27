@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.11.0
-%define release 16sme02
+%define release 17
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -22,8 +22,7 @@ Patch9: e-smith-pptpd-1.11.0-13.mitel_patch
 Patch10: e-smith-pptpd-1.11.0-14.mitel_patch
 Patch11: e-smith-pptpd-1.11.0-15.mitel_patch
 Patch12: e-smith-pptpd-1.11.0-16.mitel_patch
-Patch13: e-smith-pptpd-1.11.0-noipparam.patch
-Patch14: e-smith-pptpd-1.11.0-masqchange.patch
+Patch13: e-smith-pptpd-1.11.0-17.mitel_patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
@@ -38,14 +37,11 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
-* Wed Jul 20 2005 Shad L. Lords <slords@mail.com>
-- [1.11.0-16sme02]
-- Move masq fragement from template to db [SF: 1241414]
+* Wed Jul 27 2005 Shad L. Lords <slords@mail.com>
+- [1.11.0-17]
+- Add noipparam parameter so that ppp gets called correctly [SF: 1228376]
+- Move masq fragment from template to db [SF: 1241414]
 - Default sessions to 0 like web panel
-
-* Sat Jul 16 2005 Charlie Brady <charlieb@e-smith.com>
-- [1.11.0-16sme01]
-- Add noipparam parameter so that ppp gets called correctly
 
 * Tue Jul 12 2005 Charlie Brady <charlieb@e-smith.com>
 - [1.11.0-16]
@@ -561,7 +557,6 @@ e-smith server and gateway - configure inbound PPTP VPN access
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
-%patch14 -p1
 
 %build
 for i in console-save \

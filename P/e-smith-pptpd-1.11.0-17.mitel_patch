@@ -1,0 +1,41 @@
+Index: e-smith-pptpd/e-smith-pptpd.spec
+diff -u /dev/null e-smith-pptpd/root/etc/e-smith/db/configuration/defaults/pptpd/TCPPort:1.1
+--- /dev/null	Wed Jul 27 13:14:01 2005
++++ e-smith-pptpd/root/etc/e-smith/db/configuration/defaults/pptpd/TCPPort	Wed Jul 27 13:11:50 2005
+@@ -0,0 +1 @@
++1723
+Index: e-smith-pptpd/root/etc/e-smith/db/configuration/defaults/pptpd/access
+diff -u /dev/null e-smith-pptpd/root/etc/e-smith/db/configuration/defaults/pptpd/access:1.1
+--- /dev/null	Wed Jul 27 13:14:01 2005
++++ e-smith-pptpd/root/etc/e-smith/db/configuration/defaults/pptpd/access	Wed Jul 27 13:11:50 2005
+@@ -0,0 +1 @@
++public
+Index: e-smith-pptpd/root/etc/e-smith/db/configuration/defaults/pptpd/sessions
+diff -u e-smith-pptpd/root/etc/e-smith/db/configuration/defaults/pptpd/sessions:1.1 e-smith-pptpd/root/etc/e-smith/db/configuration/defaults/pptpd/sessions:1.2
+--- e-smith-pptpd/root/etc/e-smith/db/configuration/defaults/pptpd/sessions:1.1	Fri Mar  7 14:35:41 2003
++++ e-smith-pptpd/root/etc/e-smith/db/configuration/defaults/pptpd/sessions	Wed Jul 27 13:11:50 2005
+@@ -1 +1 @@
+-10
++0
+Index: e-smith-pptpd/root/etc/e-smith/templates/etc/pptpd.conf/noipparm
+diff -u /dev/null e-smith-pptpd/root/etc/e-smith/templates/etc/pptpd.conf/noipparm:1.1
+--- /dev/null	Wed Jul 27 13:14:01 2005
++++ e-smith-pptpd/root/etc/e-smith/templates/etc/pptpd.conf/noipparm	Wed Jul 27 13:11:50 2005
+@@ -0,0 +1,7 @@
++{
++# TAG: noipparam
++#       Suppress the passing of the client's IP address to PPP, which is
++#       done by default otherwise.
++#
++}
++noipparam
+Index: e-smith-pptpd/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowPPTP
+diff -u e-smith-pptpd/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowPPTP:1.4 e-smith-pptpd/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowPPTP:removed
+--- e-smith-pptpd/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowPPTP:1.4	Wed Aug 28 17:21:57 2002
++++ e-smith-pptpd/root/etc/e-smith/templates/etc/rc.d/init.d/masq/45AllowPPTP	Wed Dec 31 19:00:00 1969
+@@ -1,5 +0,0 @@
+-{
+-    my $status = $pptpd{status} || 'disabled';
+-
+-    $OUT = allow_tcp_in(1723, ($status eq 'enabled' ));
+-}

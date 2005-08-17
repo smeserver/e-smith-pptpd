@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.11.0
-%define release 17
+%define release 18
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -26,6 +26,8 @@ Patch13: e-smith-pptpd-1.11.0-17.mitel_patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
+Requires: kernel-module-ppp
+Requires: kernel-smp-module-ppp
 Requires: kernel => 2.4
 Requires: e-smith-lib >= 1.15.1-16
 Requires: e-smith-packetfilter >= 1.13.0-22
@@ -37,6 +39,11 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Tue Aug 16 2005 Charlie Brady <charlieb@e-smith.com>
+- [1.11.0-18]
+- Add Requires headers for kernel module RPMs, to ensure that module RPMs are
+  added during install/upgrade.
+
 * Wed Jul 27 2005 Shad L. Lords <slords@mail.com>
 - [1.11.0-17]
 - Add noipparam parameter so that ppp gets called correctly [SF: 1228376]

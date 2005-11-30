@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.11.0
-%define release 18
+%define release 19
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -39,6 +39,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Wed Nov 30 2005 Gordon Rowell <gordonr@gormand.com.au> 1.11.0-19
+- Bump release number only
+
 * Tue Aug 16 2005 Charlie Brady <charlieb@e-smith.com>
 - [1.11.0-18]
 - Add Requires headers for kernel module RPMs, to ensure that module RPMs are

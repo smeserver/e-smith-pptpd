@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.11.0
-%define release 19
+%define release 20
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -23,6 +23,7 @@ Patch10: e-smith-pptpd-1.11.0-14.mitel_patch
 Patch11: e-smith-pptpd-1.11.0-15.mitel_patch
 Patch12: e-smith-pptpd-1.11.0-16.mitel_patch
 Patch13: e-smith-pptpd-1.11.0-17.mitel_patch
+Patch14: e-smith-pptpd-1.11.0-no_duplicates.patch.
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
@@ -39,6 +40,10 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Sun Feb 12 2006 Charlie Brady <charlieb@e-smith.com> 1.11.0-20
+- Resolve some duplication of files included in e-smith-base.
+  [SME: 752]
+
 * Wed Nov 30 2005 Gordon Rowell <gordonr@gormand.com.au> 1.11.0-19
 - Bump release number only
 
@@ -567,6 +572,7 @@ e-smith server and gateway - configure inbound PPTP VPN access
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 
 %build
 for i in console-save \

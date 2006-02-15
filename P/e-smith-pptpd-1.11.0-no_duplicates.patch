@@ -1,0 +1,32 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-pptpd-1.11.0/createlinks mezzanine_patched_e-smith-pptpd-1.11.0/createlinks
+--- e-smith-pptpd-1.11.0/createlinks	2006-02-12 20:50:50.000000000 -0500
++++ mezzanine_patched_e-smith-pptpd-1.11.0/createlinks	2006-02-12 20:50:30.000000000 -0500
+@@ -5,7 +5,7 @@
+ #--------------------------------------------------
+ # general pptpd configuration
+ #--------------------------------------------------
+-foreach (qw(dhcpd.conf pptpd.conf ppp/options.pptpd ppp/ip-up.local ppp/ip-down.local))
++foreach (qw(dhcpd.conf pptpd.conf ppp/options.pptpd))
+ {
+     templates2events("/etc/$_", qw(
+ 	console-save
+@@ -20,6 +20,19 @@
+ 	user-delete
+     ));
+ }
++foreach (qw(ppp/ip-up.local ppp/ip-down.local))
++{
++    templates2events("/etc/$_", qw(
++	workgroup-update
++	remoteaccess-update
++	ip-change
++	password-modify
++	user-create
++	user-modify
++	user-modify-admin
++	user-delete
++    ));
++}
+ 
+ foreach $event ( qw(
+     console-save

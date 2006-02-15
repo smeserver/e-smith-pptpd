@@ -23,7 +23,7 @@ Patch10: e-smith-pptpd-1.11.0-14.mitel_patch
 Patch11: e-smith-pptpd-1.11.0-15.mitel_patch
 Patch12: e-smith-pptpd-1.11.0-16.mitel_patch
 Patch13: e-smith-pptpd-1.11.0-17.mitel_patch
-Patch14: e-smith-pptpd-1.11.0-no_duplicates.patch.
+Patch14: e-smith-pptpd-1.11.0-no_duplicates.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd

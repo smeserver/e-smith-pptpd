@@ -1,0 +1,61 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-pptpd-1.11.0/root/etc/e-smith/db/configuration/migrate/10NoPPTPStartIP mezzanine_patched_e-smith-pptpd-1.11.0/root/etc/e-smith/db/configuration/migrate/10NoPPTPStartIP
+--- e-smith-pptpd-1.11.0/root/etc/e-smith/db/configuration/migrate/10NoPPTPStartIP	1969-12-31 19:00:00.000000000 -0500
++++ mezzanine_patched_e-smith-pptpd-1.11.0/root/etc/e-smith/db/configuration/migrate/10NoPPTPStartIP	2006-02-15 11:04:10.000000000 -0500
+@@ -0,0 +1,4 @@
++{
++    # We don't need $pptpd{StartIP} any more
++    $DB->get_prop_and_delete('pptpd', 'StartIP');
++}
+diff -Nur -x '*.orig' -x '*.rej' e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/dhcpd.conf/04TakePPTPDAddresses mezzanine_patched_e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/dhcpd.conf/04TakePPTPDAddresses
+--- e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/dhcpd.conf/04TakePPTPDAddresses	2003-06-03 14:56:15.000000000 -0400
++++ mezzanine_patched_e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/dhcpd.conf/04TakePPTPDAddresses	2006-02-15 10:52:24.000000000 -0500
+@@ -11,16 +11,6 @@
+     # and correct the DHCP dynamic address range
+     $endDynamicIPRange = esmith::util::IPaddrToQuad($pptpd_end_addr - $pptpd_sessions);
+ 
+-    # Now let's update the pptpd record if we need to
+-    my $current_pptpd_start = $pptpd{StartIP} || "";
+-    unless ($current_pptpd_start eq $pptpd_start_addr)
+-    {
+-	my $db = esmith::ConfigDB->open;
+-	my $pptpd = $db->get('pptpd');
+-	$pptpd->merge_props(
+-		StartIP => $pptpd_start_addr,
+-	    );
+-    }
+     return "# Addresses from " .
+ 	esmith::util::IPaddrToQuad($pptpd_start_addr) .
+ 	" to " .
+diff -Nur -x '*.orig' -x '*.rej' e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/pptpd.conf/remoteip mezzanine_patched_e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/pptpd.conf/remoteip
+--- e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/pptpd.conf/remoteip	2006-02-15 11:08:06.000000000 -0500
++++ mezzanine_patched_e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/pptpd.conf/remoteip	2006-02-15 11:02:05.000000000 -0500
+@@ -33,22 +33,18 @@
+ 
+     my $sessions = $pptpd{sessions} || 0;
+ 
+-    my $startIP = $pptpd{StartIP};
+-    unless (defined $startIP)
+-    {
+-	# We can't guess the start IP
+-	warn "pptpd StartIP must be defined before this template is expanded";
+-	return "";
+-    }
+-    $endIP = esmith::util::IPaddrToQuad($startIP + $sessions - 1);
+-    $startIP = esmith::util::IPaddrToQuad($startIP);
++    # Calculate pptpd start and end addresses
++    my $endIP = $dhcpd{end};
++    my $end_addr =  esmith::util::IPquadToAddr($endIP);
++    my $start_addr = $end_addr - $sessions + 1;
++    my $startIP = esmith::util::IPaddrToQuad($start_addr);
+     my @start = split(/\./, $startIP);
+     my @end = split(/\./, $endIP);
+ 
+     $OUT .= "remoteip ";
+ 
+-    $start = shift @start;
+-    $end  = shift @end ;
++    my $start = shift @start;
++    my $end  = shift @end ;
+     $OUT .= ($start eq $end) ? "$start." : "$start-$end.";
+ 
+     $start = shift @start;

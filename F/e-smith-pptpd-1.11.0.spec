@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.11.0
-%define release 21
+%define release 22
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -25,6 +25,7 @@ Patch12: e-smith-pptpd-1.11.0-16.mitel_patch
 Patch13: e-smith-pptpd-1.11.0-17.mitel_patch
 Patch14: e-smith-pptpd-1.11.0-no_duplicates.patch
 Patch15: e-smith-pptpd-1.11.0-StartIP.patch
+Patch16: e-smith-pptpd-1.11.0-passive.patch 
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
@@ -41,6 +42,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Wed Mar 1 2006 Gordon Rowell <gordonr@gormand.com.au> 1.11.0-22
+- Add 'passive' option to /etc/ppp/options.pptpd [SME: 160]
+
 * Wed Feb 15 2006 Charlie Brady <charlie_brady@mitel.com> 1.11.0-21
 - Dynamically calculate remote IP address range - dhcpd.conf won't
   necessarily be expanded before pptpd.conf, so we can't depend on
@@ -580,6 +584,7 @@ e-smith server and gateway - configure inbound PPTP VPN access
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
+%patch16 -p1
 
 %build
 for i in console-save \

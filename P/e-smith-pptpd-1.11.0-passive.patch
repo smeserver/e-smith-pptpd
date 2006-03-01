@@ -1,0 +1,5 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/ppp/options.pptpd/passive mezzanine_patched_e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/ppp/options.pptpd/passive
+--- e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/ppp/options.pptpd/passive	1970-01-01 10:00:00.000000000 +1000
++++ mezzanine_patched_e-smith-pptpd-1.11.0/root/etc/e-smith/templates/etc/ppp/options.pptpd/passive	2006-03-01 16:51:38.688486013 +1100
+@@ -0,0 +1 @@
++passive

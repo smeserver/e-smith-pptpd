@@ -1,31 +1,14 @@
 Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
-%define version 1.11.0
-%define release 22
+%define version 1.12.0
+%define release 01
 Version: %{version}
 Release: %{release}
 License: GPL
 Group: Networking/Daemons
 Packager: e-smith developers <bugs@e-smith.com>
 Source: %{name}-%{version}.tar.gz
-Patch0: e-smith-pptpd-1.11.0-02.mitel_patch
-Patch1: e-smith-pptpd-1.11.0-03.mitel_patch
-Patch2: e-smith-pptpd-1.11.0-04.mitel_patch
-Patch3: e-smith-pptpd-1.11.0-05.mitel_patch
-Patch4: e-smith-pptpd-1.11.0-07.mitel_patch
-Patch5: e-smith-pptpd-1.11.0-08.mitel_patch
-Patch6: e-smith-pptpd-1.11.0-09.mitel_patch
-Patch7: e-smith-pptpd-1.11.0-10.mitel_patch
-Patch8: e-smith-pptpd-1.11.0-11.mitel_patch
-Patch9: e-smith-pptpd-1.11.0-13.mitel_patch
-Patch10: e-smith-pptpd-1.11.0-14.mitel_patch
-Patch11: e-smith-pptpd-1.11.0-15.mitel_patch
-Patch12: e-smith-pptpd-1.11.0-16.mitel_patch
-Patch13: e-smith-pptpd-1.11.0-17.mitel_patch
-Patch14: e-smith-pptpd-1.11.0-no_duplicates.patch
-Patch15: e-smith-pptpd-1.11.0-StartIP.patch
-Patch16: e-smith-pptpd-1.11.0-passive.patch 
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
@@ -42,6 +25,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Wed Mar 15 2006 Charlie Brady <charlie_brady@mitel.com> 1.12.0-01
+- Roll stable stream version. [SME: 1016]
+
 * Wed Mar 1 2006 Gordon Rowell <gordonr@gormand.com.au> 1.11.0-22
 - Add 'passive' option to /etc/ppp/options.pptpd [SME: 160]
 
@@ -568,23 +554,6 @@ e-smith server and gateway - configure inbound PPTP VPN access
 
 %prep
 %setup
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
-%patch12 -p1
-%patch13 -p1
-%patch14 -p1
-%patch15 -p1
-%patch16 -p1
 
 %build
 for i in console-save \

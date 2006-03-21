@@ -2,13 +2,14 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.12.0
-%define release 01
+%define release 02
 Version: %{version}
 Release: %{release}
 License: GPL
 Group: Networking/Daemons
 Packager: e-smith developers <bugs@e-smith.com>
 Source: %{name}-%{version}.tar.gz
+Patch0: e-smith-pptpd-1.12.0-misc.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
@@ -25,6 +26,12 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Tue Mar 21 2006 Charlie Brady <charlie_brady@mitel.com> 1.12.0-02
+- Purge Interfaces property of pptpd record on bootup. [SME: 1073]
+- Remove multilink setting from pppd configuration used by pptpd. Add
+  LCP timeout processing to autodisconnect stale links. [SME: 1064]
+- Control "passive" setting by db property - enabled by default. [SME: 1064]
+
 * Wed Mar 15 2006 Charlie Brady <charlie_brady@mitel.com> 1.12.0-01
 - Roll stable stream version. [SME: 1016]
 
@@ -554,6 +561,7 @@ e-smith server and gateway - configure inbound PPTP VPN access
 
 %prep
 %setup
+%patch0 -p1
 
 %build
 for i in console-save \

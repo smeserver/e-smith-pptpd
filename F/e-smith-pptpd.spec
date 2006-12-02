@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.12.0
-%define release 03
+%define release 04
 Version: %{version}
 Release: %{release}
 License: GPL
@@ -14,8 +14,10 @@ Patch1: e-smith-pptpd-1.12.0-debug.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
-Requires: kernel-module-ppp
-Requires: kernel-smp-module-ppp
+Requires: kmod-ppp
+Requires: kmod-ppp-smp
+Obsoletes: kernel-module-ppp
+Obsoletes: kernel-smp-module-ppp
 Requires: kernel => 2.4
 Requires: e-smith-lib >= 1.15.1-16
 Requires: e-smith-packetfilter >= 1.13.0-22
@@ -27,6 +29,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Sat Dec 02 2006 Shad L. Lords <slords@mail.com> 1.12.0-04
+- Update requires to reflect new kernel module format
+
 * Sun Apr  9 2006 Charlie Brady <charlie_brady@mitel.com> 1.12.0-03
 - Make pptpd debug logging depend on $pptpd{debug}. [SME: 1224]
 

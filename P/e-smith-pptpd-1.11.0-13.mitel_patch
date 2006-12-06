@@ -1,6 +1,0 @@
-Index: e-smith-pptpd/e-smith-pptpd.spec
-diff -u /dev/null e-smith-pptpd/root/etc/e-smith/templates/etc/ppp/options.pptpd/radius:1.1
---- /dev/null	Thu Jun 16 14:09:46 2005
-+++ e-smith-pptpd/root/etc/e-smith/templates/etc/ppp/options.pptpd/radius	Thu Jun 16 14:08:52 2005
-@@ -0,0 +1 @@
-+plugin radius.so

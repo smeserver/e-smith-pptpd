@@ -2,12 +2,12 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.12.0
-%define release 04
+%define release 5
 Version: %{version}
-Release: %{release}
+Release: %smerelease %{release}
+Packager: %{_packager}
 License: GPL
 Group: Networking/Daemons
-Packager: e-smith developers <bugs@e-smith.com>
 Source: %{name}-%{version}.tar.gz
 Patch0: e-smith-pptpd-1.12.0-misc.patch
 Patch1: e-smith-pptpd-1.12.0-debug.patch
@@ -29,6 +29,10 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Thu Dec 07 2006 Shad L. Lords <slords@mail.com>
+- Update to new release naming.  No functional changes.
+- Make Packager generic
+
 * Sat Dec 02 2006 Shad L. Lords <slords@mail.com> 1.12.0-04
 - Update requires to reflect new kernel module format
 

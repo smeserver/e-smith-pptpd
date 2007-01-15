@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.12.0
-%define release 5
+%define release 6
 Version: %{version}
 Release: %smerelease %{release}
 Packager: %{_packager}
@@ -11,6 +11,7 @@ Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
 Patch0: e-smith-pptpd-1.12.0-misc.patch
 Patch1: e-smith-pptpd-1.12.0-debug.patch
+Patch2: e-smith-pptpd-1.12.0-emptyinter.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
@@ -29,6 +30,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Sun Jan 14 2007 Shad L. Lords <slords@mail.com> 1.12.0-6
+- Fix interface-access script to remove warnings [SME: 2244]
+
 * Thu Dec 07 2006 Shad L. Lords <slords@mail.com>
 - Update to new release naming.  No functional changes.
 - Make Packager generic
@@ -576,6 +580,7 @@ e-smith server and gateway - configure inbound PPTP VPN access
 %setup
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 for i in console-save \

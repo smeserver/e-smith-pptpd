@@ -13,6 +13,7 @@ Patch0: e-smith-pptpd-1.12.0-misc.patch
 Patch1: e-smith-pptpd-1.12.0-debug.patch
 Patch2: e-smith-pptpd-1.12.0-emptyinter.patch
 Patch3: e-smith-pptpd-1.12.0-dhcpd.conf_perms.patch
+Patch4: e-smith-pptpd-1.12.0-pptpd_perms.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
@@ -33,6 +34,7 @@ e-smith server and gateway - configure inbound PPTP VPN access
 %changelog
 * Fri Apr 06 2007 Shad L. Lords <slords@mail.com> 1.12.0-7
 - Fix perms on dhcpd.conf file [SME: 2715]
+- Fix perms on pptpd config files [SME: 2717]
 
 * Sun Jan 14 2007 Shad L. Lords <slords@mail.com> 1.12.0-6
 - Fix interface-access script to remove warnings [SME: 2244]
@@ -586,6 +588,7 @@ e-smith server and gateway - configure inbound PPTP VPN access
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 for i in console-save \

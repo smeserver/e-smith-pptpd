@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.12.0
-%define release 8
+%define release 9
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -17,8 +17,14 @@ Patch5: e-smith-pptpd-1.12.0-dhcpd_perms.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
-Requires: kmod-ppp
-Requires: kmod-ppp-smp
+%if "%{?rhel}" == "5"
+# Kernel modules now included in kernel
+Obsoletes: kmod-ppp
+Obsoletes: kmod-ppp-smp
+Obsoletes: kmod-ppp-xenU
+%else
+Requires: ppp-kmod
+%endif
 Obsoletes: kernel-module-ppp
 Obsoletes: kernel-smp-module-ppp
 Requires: kernel => 2.4
@@ -32,6 +38,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Wed May 9 2007 Shad L. Lords <slords@mail.com> 1.12.0-9
+- Updates to support SME Server 8
+
 * Sun Apr 29 2007 Shad L. Lords <slords@mail.com>
 - Clean up spec so package can be built by koji/plague
 

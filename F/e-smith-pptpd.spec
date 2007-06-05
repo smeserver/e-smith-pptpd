@@ -40,7 +40,7 @@ e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
 * Sun Jun 03 2007 Gavin Weight <gweight@gmail.com> 1.12.0-10
-- Fix VPN Timeout issue. [SME: 3001]
+- Increase lcp-echo-failure from 4 to 10. [SME: 3001]
 
 * Wed May 9 2007 Shad L. Lords <slords@mail.com> 1.12.0-9
 - Updates to support SME Server 8

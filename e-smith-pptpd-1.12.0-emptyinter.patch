@@ -1,0 +1,16 @@
+diff -Nur -x '*.orig' -x '*.rej' e-smith-pptpd-1.12.0/root/etc/e-smith/events/actions/pptp-interface-access mezzanine_patched_e-smith-pptpd-1.12.0/root/etc/e-smith/events/actions/pptp-interface-access
+--- e-smith-pptpd-1.12.0/root/etc/e-smith/events/actions/pptp-interface-access	2003-05-01 11:10:33.000000000 -0600
++++ mezzanine_patched_e-smith-pptpd-1.12.0/root/etc/e-smith/events/actions/pptp-interface-access	2007-01-14 20:57:38.000000000 -0700
+@@ -33,11 +33,7 @@
+ 
+ my $db = esmith::ConfigDB->open;
+ my $pptpd = $db->get('pptpd');
+-my %ifaces = ();
+-foreach my $interface (split /,/, $pptpd->prop('Interfaces'))
+-{
+-    $ifaces{$interface} = 1;
+-}
++my %ifaces = map { $_ => 1 } split /,/, $pptpd->prop('Interfaces') || '';
+ 
+ my $event = $ARGV[0] || die "Event name must be given\n";
+ my $ipparam = $ARGV[6] || "(none)";

@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.12.0
-%define release 10
+%define release 11
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -15,6 +15,7 @@ Patch3: e-smith-pptpd-1.12.0-dhcpd.conf_perms.patch
 Patch4: e-smith-pptpd-1.12.0-pptpd_perms.patch
 Patch5: e-smith-pptpd-1.12.0-dhcpd_perms.patch
 Patch6: e-smith-pptpd-1.12.0-fix_vpn_timeouts.patch
+Patch7: e-smith-pptpd-1.12.0-mtumru.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
@@ -39,6 +40,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Sat Jan 12 2008 Shad L. Lords <slords@lordsfam.net> 1.12.0-11
+- pptp connections setting mtu/mru > 1400 [SME: 549]
+
 * Sun Jun 03 2007 Gavin Weight <gweight@gmail.com> 1.12.0-10
 - Increase lcp-echo-failure from 4 to 10. [SME: 3001]
 
@@ -609,6 +613,7 @@ e-smith server and gateway - configure inbound PPTP VPN access
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 for i in console-save \

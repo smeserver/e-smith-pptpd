@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.12.0
-%define release 11
+%define release 12
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -16,6 +16,7 @@ Patch4: e-smith-pptpd-1.12.0-pptpd_perms.patch
 Patch5: e-smith-pptpd-1.12.0-dhcpd_perms.patch
 Patch6: e-smith-pptpd-1.12.0-fix_vpn_timeouts.patch
 Patch7: e-smith-pptpd-1.12.0-mtumru.patch
+Patch8: e-smith-pptpd-1.12.0-mtumru_db.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
@@ -40,6 +41,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Wed May 21 2008 Shad L. Lords <slords@lordsfam.net> 1.12.0-12
+- Move mtu/mru settings to database [SME: 549]
+
 * Sat Jan 12 2008 Shad L. Lords <slords@lordsfam.net> 1.12.0-11
 - pptp connections setting mtu/mru > 1400 [SME: 549]
 
@@ -614,6 +618,7 @@ e-smith server and gateway - configure inbound PPTP VPN access
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
 
 %build
 for i in console-save \

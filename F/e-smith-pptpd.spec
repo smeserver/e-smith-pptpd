@@ -2,7 +2,7 @@ Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
 %define version 1.12.0
-%define release 12
+%define release 13
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
@@ -30,7 +30,6 @@ Requires: ppp-kmod
 %endif
 Obsoletes: kernel-module-ppp
 Obsoletes: kernel-smp-module-ppp
-Requires: kernel => 2.4
 Requires: e-smith-lib >= 1.15.1-16
 Requires: e-smith-packetfilter >= 1.13.0-22
 Requires: e-smith-radiusd
@@ -41,6 +40,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Sat Aug 09 2008 Gavin Weight <gweight@gmail.com> 1.12.0-13
+- Remove the Requires kernel =>2.4 line. [SME: 4483]
+
 * Wed May 21 2008 Shad L. Lords <slords@lordsfam.net> 1.12.0-12
 - Move mtu/mru settings to database [SME: 549]
 

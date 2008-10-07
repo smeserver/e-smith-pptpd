@@ -1,33 +1,21 @@
+# $Id: e-smith-pptpd.spec,v 1.5 2008/10/07 19:12:55 slords Exp $
+
 Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
 Name: %{name}
-%define version 1.12.0
-%define release 13
+%define version 2.2.0
+%define release 1
 Version: %{version}
 Release: %{release}%{?dist}
 License: GPL
 Group: Networking/Daemons
 Source: %{name}-%{version}.tar.gz
-Patch0: e-smith-pptpd-1.12.0-misc.patch
-Patch1: e-smith-pptpd-1.12.0-debug.patch
-Patch2: e-smith-pptpd-1.12.0-emptyinter.patch
-Patch3: e-smith-pptpd-1.12.0-dhcpd.conf_perms.patch
-Patch4: e-smith-pptpd-1.12.0-pptpd_perms.patch
-Patch5: e-smith-pptpd-1.12.0-dhcpd_perms.patch
-Patch6: e-smith-pptpd-1.12.0-fix_vpn_timeouts.patch
-Patch7: e-smith-pptpd-1.12.0-mtumru.patch
-Patch8: e-smith-pptpd-1.12.0-mtumru_db.patch
 BuildRoot: /var/tmp/%{name}-%{version}-%{release}-buildroot
 Requires: e-smith-base >= 4.13.16-27
 Requires: pptpd
-%if "%{?rhel}" == "5"
-# Kernel modules now included in kernel
 Obsoletes: kmod-ppp
 Obsoletes: kmod-ppp-smp
 Obsoletes: kmod-ppp-xenU
-%else
-Requires: ppp-kmod
-%endif
 Obsoletes: kernel-module-ppp
 Obsoletes: kernel-smp-module-ppp
 Requires: e-smith-lib >= 1.15.1-16
@@ -40,6 +28,9 @@ BuildArchitectures: noarch
 e-smith server and gateway - configure inbound PPTP VPN access
 
 %changelog
+* Tue Oct 7 2008 Shad L. Lords <slords@mail.com> 2.2.0-1.sme
+- Roll new stream to separate sme7/sme8 trees [SME: 4633]
+
 * Sat Aug 09 2008 Gavin Weight <gweight@gmail.com> 1.12.0-13
 - Remove the Requires kernel =>2.4 line. [SME: 4483]
 
@@ -612,15 +603,6 @@ e-smith server and gateway - configure inbound PPTP VPN access
 
 %prep
 %setup
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
 
 %build
 for i in console-save \

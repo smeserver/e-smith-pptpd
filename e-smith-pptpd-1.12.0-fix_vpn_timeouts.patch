@@ -1,7 +1,0 @@
-diff -Nur -x '*.orig' -x '*.rej' e-smith-pptpd-1.12.0/root/etc/e-smith/templates/etc/ppp/options.pptpd/lcp-echo-options mezzanine_patched_e-smith-pptpd-1.12.0/root/etc/e-smith/templates/etc/ppp/options.pptpd/lcp-echo-options
---- e-smith-pptpd-1.12.0/root/etc/e-smith/templates/etc/ppp/options.pptpd/lcp-echo-options	2007-06-03 12:07:11.000000000 -0600
-+++ mezzanine_patched_e-smith-pptpd-1.12.0/root/etc/e-smith/templates/etc/ppp/options.pptpd/lcp-echo-options	2007-06-03 12:05:37.000000000 -0600
-@@ -1,2 +1,2 @@
- lcp-echo-interval 15
--lcp-echo-failure 4
-+lcp-echo-failure 10

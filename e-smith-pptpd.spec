@@ -1,4 +1,4 @@
-# $Id: e-smith-pptpd.spec,v 1.5 2008/10/07 19:12:54 slords Exp $
+# $Id: e-smith-pptpd.spec,v 1.6 2010/03/05 20:07:37 slords Exp $
 
 Summary: e-smith server and gateway - configure PPTP inbound VPN
 %define name e-smith-pptpd
@@ -32,10 +32,10 @@ e-smith server and gateway - configure inbound PPTP VPN access
 * Sat Aug 09 2008 Gavin Weight <gweight@gmail.com> 1.12.0-13
 - Remove the Requires kernel =>2.4 line. [SME: 4483]
 
-* Wed May 21 2008 Shad L. Lords <slords@lordsfam.net> 1.12.0-12
+* Wed May 21 2008 Shad L. Lords <slords@mail.com> 1.12.0-12
 - Move mtu/mru settings to database [SME: 549]
 
-* Sat Jan 12 2008 Shad L. Lords <slords@lordsfam.net> 1.12.0-11
+* Sat Jan 12 2008 Shad L. Lords <slords@mail.com> 1.12.0-11
 - pptp connections setting mtu/mru > 1400 [SME: 549]
 
 * Sun Jun 03 2007 Gavin Weight <gweight@gmail.com> 1.12.0-10
